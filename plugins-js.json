@@ -1,0 +1,10 @@
+[
+    {
+        "arquivos": [
+            "plugins/jquery/dist/jquery.min.js",
+            "plugins/fancybox/source/jquery.fancybox.js",
+            "plugins/photoswipe/dist/photoswipe.min.js",
+            "plugins/photoswipe/dist/photoswipe-ui-default.min.js"
+        ]
+    }
+]

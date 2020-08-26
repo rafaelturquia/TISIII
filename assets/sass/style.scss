@@ -1,0 +1,23 @@
+﻿@charset "UTF-8";
+
+/* CSS BASE */
+
+@import "base/variaveis";
+@import "base/mixins";
+@import "base/fonts";
+@import "base/generic";
+@import "base/slick";
+@import "base/grid";
+
+/* TEMPLATES */
+
+@import "layout/geral";
+@import "layout/header";
+@import "layout/vitrine";
+@import "layout/principais-produtos"; 
+@import "layout/produtos";
+@import "layout/informativo";
+@import "layout/halfThumb";
+@import "layout/interna-produtos";
+@import "layout/galeria";
+@import "layout/footer"; 

@@ -1,0 +1,47 @@
+.principais-produtos{
+    background-color: #eee;
+    text-align: center;
+    ul{
+        width: 60%;
+        margin: 5% auto;
+        display: flex;
+        li{ 
+            background-color: #fff;
+            float: left;
+            width: 25%;
+            height: 355px;
+            border-right: 1px solid #f0f0f0;
+            padding: 60px 40px;
+            img{
+                height: 100px;
+                object-fit: contain;
+                object-position: center; 
+            }
+            p{
+                font-family: $regular;
+                font-size: 20px;
+                color: $cinza-esc; 
+                margin: 25px 0;
+            }
+        }
+        li.primeiro{
+            background-color: $vermelho;
+            color: #fff;
+            padding: 40px; 
+            border-radius: 10px 0 0 10px;
+
+            h2{
+                margin: 15px 0;
+            }
+            p{
+                color: #fff;
+            }
+            a{
+                display: inline-flex;
+            }
+        }
+        li.ultimo{
+            border-radius: 0 10px 10px 0;
+        }
+    }
+}

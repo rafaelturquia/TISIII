@@ -1,0 +1,112 @@
+@mixin transform($transforms) {
+    -webkit-transform: $transforms;
+    -moz-transform: $transforms;
+    -ms-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin scale($scale) {
+    @include transform(scale($scale));
+}
+
+@mixin opacity($val){
+    filter: alpha(opacity= $val * 100);
+    opacity: $val;
+}
+
+@mixin inline-block($alinhamento){
+    display: inline-block;
+    vertical-align: $alinhamento;
+}
+
+@mixin circle($width) {
+    width: $width;
+    height: $width;
+    @include border-radius(50%);
+}
+
+@mixin border-radius($width) {
+    -moz-border-radius: $width;
+    -webkit-border-radius: $width;
+    border-radius: $width;
+    behavior: url(pie/PIE.htc);
+}
+
+@mixin texto($font, $cor, $tamanho) {
+    font-family: $font;
+    color: $cor;
+    font-size: $tamanho / 16 + rem;
+}
+
+@function rem($size) {
+    @return $size / 16 + rem;
+}
+
+$full: "screen and (min-width: 1601px)";
+$mrv: "screen and (min-width: 1380px)";
+$notebook: "screen and (min-width: 1200px)";
+$media1025: "screen and (min-width: 1025px)";
+$tabletW: "screen and (min-width: 960px)";
+$tabletH: "screen and (min-width: 768px)";
+$tabletUnico : "screen and (max-width: 768px) AND (mAX-width: 1025px)";
+$mobile: "screen and (max-width: 767px)";
+$miniMoble: "screen and (max-width: 350px)";
+
+@mixin full {
+    @media #{$full} {
+        @content;
+    }
+}
+@mixin tabletUnico {
+    @media #{$tabletUnico} {
+        @content;
+    }
+}
+@mixin mrv {
+    @media #{$mrv} {
+        @content;
+    }
+}
+@mixin notebook {
+    @media #{$notebook} {
+        @content;
+    }
+}
+@mixin media1025 {
+    @media #{$media1025} {
+        @content;
+    }
+}
+@mixin tabletW {
+    @media #{$tabletW} {
+        @content;
+    }
+}
+@mixin tabletH {
+    @media #{$tabletH} {
+        @content;
+    }
+}
+@mixin mobile {
+    @media #{$mobile} {
+        @content;
+    }
+}
+@mixin miniMobile {
+    @media #{$miniMoble} {
+        @content;
+    }
+}
+
+@mixin input-placeholder($color) {
+    &::-moz-placeholder {
+        color: $color;
+    }
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+    color: $color;
+}

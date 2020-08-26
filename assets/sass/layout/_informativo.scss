@@ -1,0 +1,22 @@
+.informativo{
+    background-image: url(imgs/informativo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    color: #fff;
+
+    .centro{
+        transform: translate(0%, 20%)
+    }
+    
+    h3{
+        font-family: $semibold;
+        font-size: 40px;
+    }
+    p{
+        font-family: $regular;
+        font-size: 26px;
+    }
+}

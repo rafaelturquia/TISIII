@@ -1,0 +1,54 @@
+.produtos{
+    background-color: #eee;
+    text-align: center;
+    padding: 0 0 50px;
+    ul{
+        width: 60%;
+        margin: 0 auto 0.5%;
+        display: flex;
+        li{ 
+            background-color: #fff;
+            float: left;
+            width: 24.25%;
+            height: 355px;
+            padding: 60px 12px;
+            margin: 0 0.5%;
+            border-radius: 10px;
+            
+            .categoria{
+                position: relative;
+
+                span{
+                    position: absolute;
+                    top: -48px;
+                    right: 0;
+                    padding: 4px 10px;
+                    border-radius: 7px;
+                }
+            }
+
+            img{
+                height: 100px;
+                object-fit: contain;
+                object-position: center; 
+            }
+            p{
+                font-family: $regular;
+                font-size: 20px;
+                color: $cinza-esc; 
+                margin: 25px 0;
+            }
+        }
+        li.primeiro{
+            margin: 0 .5% 0 0;
+        }
+        li.ultimo{
+            margin: 0 0 0 0.5%;
+        }
+    }
+    ul.duplo{
+        li{
+            width: 50%;
+        }
+    }
+}

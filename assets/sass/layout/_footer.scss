@@ -1,0 +1,41 @@
+footer{
+    background-color: #151515;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    .align-center{
+        display: flex;
+        align-items: center;
+        @include mobile{
+            flex-direction: column;
+        }
+    }
+
+    .justify-content-end{
+        justify-content: end;
+        @include mobile{
+            justify-content: center;
+        }
+    }
+
+    img{
+        margin-right: 10px;
+        @include mobile{
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
+    }
+
+    p{
+        color: #fff;
+        font-size: 14px;
+    }
+    i{
+        color: #fff;
+        font-size: 28px;
+        @include mobile{
+            display: block;
+            margin-bottom: 16px;
+        }
+    }
+}

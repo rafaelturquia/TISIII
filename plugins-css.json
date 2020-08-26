@@ -1,0 +1,11 @@
+[
+    {
+        "arquivos": [
+            "plugins/slick/slick/slick.css",
+            "plugins/slick/slick/slick-theme.css",
+            "plugins/photoswipe/dist/photoswipe.css",
+            "plugins/photoswipe/dist/default-skin/default-skin.css",
+            "plugins/fancybox/source/jquery.fancybox.css"
+        ]
+    }
+]
