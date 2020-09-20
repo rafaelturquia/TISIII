@@ -1,19 +1,19 @@
-var gulp        = require('gulp'),
+var gulp = require('gulp'),
     browserSync = require('browser-sync'),
-    cleanCSS    = require('gulp-clean-css'),
-    concat      = require('gulp-concat'),
-    concatCss   = require('gulp-concat-css'),
-    minifycss   = require('gulp-minify-css'),
-    jshint      = require('gulp-jshint'),
+    cleanCSS = require('gulp-clean-css'),
+    concat = require('gulp-concat'),
+    concatCss = require('gulp-concat-css'),
+    minifycss = require('gulp-minify-css'),
+    jshint = require('gulp-jshint'),
     jshintStyle = require('jshint-stylish'),
-    plumber     = require('gulp-plumber'),
-    rename      = require('gulp-rename'),
-    sass        = require('gulp-compass'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    notify      = require('gulp-notify'),
-    uglify      = require('gulp-uglify'),
-    fs          = require('fs'),
-    htmlmin     = require('gulp-htmlmin');
+    plumber = require('gulp-plumber'),
+    rename = require('gulp-rename'),
+    sass = require('gulp-compass'),
+    sourcemaps = require('gulp-sourcemaps'),
+    notify = require('gulp-notify'),
+    uglify = require('gulp-uglify'),
+    fs = require('fs'),
+    htmlmin = require('gulp-htmlmin');
 
 gulp.task('server', () => {
     browserSync.init({
@@ -24,21 +24,21 @@ gulp.task('server', () => {
 });
 
 gulp.task('sync', () => {
-  browserSync.reload();
+    browserSync.reload();
 });
 
 function customPlumber(errTitle) {
-  return plumber({
-    errorHandler: notify.onError({
-          // Customizing error title
-          title: errTitle || "Error running Gulp",
-          message: "Error: <%= error.message %>",
-          sound: "Glass"
+    return plumber({
+        errorHandler: notify.onError({
+            // Customizing error title
+            title: errTitle || "Error running Gulp",
+            message: "Error: <%= error.message %>",
+            sound: "Glass"
         })
     });
 }
 
-gulp.task('sass', () =>{
+gulp.task('sass', () => {
     gulp.src(['assets/sass/**/*.scss'])
         .pipe(customPlumber('Pog no Sass'))
         .pipe(sass({
@@ -48,12 +48,12 @@ gulp.task('sass', () =>{
             style: 'compressed'
         }))
         .pipe(cleanCSS())
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('build/css/'))
-        .pipe(browserSync.reload({stream:true}))
+        .pipe(browserSync.reload({ stream: true }))
 });
 
-gulp.task('scripts', () =>{
+gulp.task('scripts', () => {
     gulp.src('assets/js/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(customPlumber('Pog no Js'))
@@ -61,10 +61,10 @@ gulp.task('scripts', () =>{
         .pipe(jshint.reporter(jshintStyle))
         .pipe(concat('scripts.js'))
         .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('build/js/'))
-        .pipe(browserSync.reload({stream:true}))
+        .pipe(browserSync.reload({ stream: true }))
 });
 
 //Tarefa para unir todas as bibliotecas js
@@ -93,36 +93,47 @@ gulp.task('libsCSS', () => {
 gulp.task('minify', () => {
     return gulp.src('./*.html')
         .pipe(customPlumber('Pog no HtmlMin'))
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest('build'));
-  });
+});
 
-// Gulp task to minify HTML files
-// gulp.task('pages', function() {
-//     return gulp.src(['produtos/*.html'])
-//       .pipe(htmlmin({
-//         collapseWhitespace: true,
-//         removeComments: true
-//       }))
-//       .pipe(gulp.dest('./build/produtos'));
-//   });
+gulp.task('minify', () => {
+    return gulp.src('produtos/index.html')
+        .pipe(customPlumber('Pog no HtmlMin'))
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('build/produtos'));
+});
 
-// Task to minify HTML
-gulp.task('minify-html', function() {
-    return gulp.src('produtos/*.html')
-    .pipe(htmlmin())
-    .pipe(gulp.dest('build/produtos'));
-    });
-    
-    gulp.task('watch', function (){
-        gulp.watch('produtos/*.html', ['minify-html']);
-    // other tasks
-    });
+gulp.task('minify', () => {
+    return gulp.src('produto-descricao/index.html')
+        .pipe(customPlumber('Pog no HtmlMin'))
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('build/produto-descricao'));
+});
 
-gulp.task('default', ['server'], () =>{
-    gulp.watch("assets/sass/**/*.scss", ['sass','sync']);
-    gulp.watch("assets/js/**/*.js", ['scripts','sync']);
-    gulp.watch("./*.html", ['minify','sync']);
+gulp.task('minify', () => {
+    return gulp.src('cadastro-produto/index.html')
+        .pipe(customPlumber('Pog no HtmlMin'))
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('build/cadastro-produto'));
+});
+
+
+gulp.task('minify', () => {
+    return gulp.src('cadastro-cliente/index.html')
+        .pipe(customPlumber('Pog no HtmlMin'))
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('build/cadastro-cliente'));
+});
+
+gulp.task('default', ['server'], () => {
+    gulp.watch("assets/sass/**/*.scss", ['sass', 'sync']);
+    gulp.watch("assets/js/**/*.js", ['scripts', 'sync']);
+    gulp.watch("./*.html", ['minify', 'sync']);
+    gulp.watch("cadastro-produto/index.html", ['minify', 'sync']);
+    gulp.watch("produtos/index.html", ['minify', 'sync']);
+    gulp.watch("produto-descricao/index.html", ['minify', 'sync']);
+    gulp.watch("cadastro-cliente/index.html", ['minify', 'sync']);
     gulp.watch("./plugins-js.json", ['libsJS']);
     gulp.watch("./plugins-css.json", ['libsCSS']);
 });
